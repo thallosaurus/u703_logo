@@ -1,0 +1,35 @@
+/* Dark Theme */
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --logo-u-color-bg: ghostwhite;
+        --logo-rest-color-bg: #333333;
+        --logo-u-textcolor: var(--logo-rest-color-bg);
+        --logo-rest-textcolor: var(--logo-u-color-bg);
+        --page-bg-color: var(--logo-rest-color-bg);
+    }
+}
+
+
+/* Light Theme */
+
+@media (prefers-color-scheme: light) {
+     :root {
+        --logo-u-color-bg: #333333;
+        --logo-rest-color-bg: white;
+        --logo-u-textcolor: var(--logo-rest-color-bg);
+        --logo-rest-textcolor: var(--logo-u-color-bg);
+        --page-bg-color: var(--logo-rest-color-bg);
+    }
+}
+
+
+/* For overriding the color scheme */
+
+.logo-colors-override {
+    --logo-u-color-bg: #333333;
+    --logo-rest-color-bg: white;
+    --logo-u-textcolor: var(--logo-rest-color-bg);
+    --logo-rest-textcolor: var(--logo-u-color-bg);
+    --page-bg-color: var(--logo-rest-color-bg);
+}

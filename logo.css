@@ -1,0 +1,60 @@
+.logo {
+    font-family: 'Barlow', sans-serif;
+    /* font-size: 200px; */
+    border: 0.05em solid var(--logo-u-color-bg);
+    transition: border-color 0.5s ease-in-out;
+    cursor: default;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+.logo-size-xl {
+    font-size: 5vw;
+}
+
+.logo-size-big {
+    font-size: 4vw;
+}
+
+.logo-size-medium {
+    font-size: 3vw;
+}
+
+.logo-size-small {
+    font-size: 2vw;
+}
+
+.logo-size-tiny {
+    font-size: 1vw;
+}
+
+.logo-blacked {
+    background-color: var(--logo-u-color-bg);
+    color: var(--logo-u-textcolor);
+    border-right: 0.05em solid var(--logo-u-color-bg);
+    padding-right: 0.25em;
+    padding-left: 0.25em;
+    transition: all 0.5s ease-in-out;
+}
+
+.logo-whited {
+    padding-right: 0.25em;
+    padding-left: 0.25em;
+    background-color: var(--logo-rest-color-bg);
+    color: var(--logo-rest-textcolor);
+    transition: all 0.5s ease-in-out;
+}
+
+
+/* .logo:before {
+    content: "U";
+    background-color: black;
+    color: white;
+    border-color: black;
+    border-style: dotted;
+    display: inline;
+    padding-right: 0.25em;
+    padding-left: 0.25em;
+} */

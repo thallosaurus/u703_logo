@@ -1,0 +1,9 @@
+body {
+    background-color: var(--page-bg-color);
+    overflow-x: hidden;
+}
+
+.preview p {
+    font-family: 'Barlow';
+    color: var(--logo-rest-textcolor);
+}
