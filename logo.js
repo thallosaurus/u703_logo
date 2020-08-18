@@ -1,103 +1,47 @@
-/**
- * Main function that creates the logo. Gives back the complete logo as HTMLElement.
- *
- * @param {string} [pre="U"] The text that belongs in the first square
- * @param {string} [brand="703"] The text that belongs in the second square
- * @param {function} [onclick=null] Optional: Function that gets called when the logo receives an onclick-Event
- * @param {string} [font="default"] Optional: Set the css selector prefixed with font
- * @param {string} [size="tiny"] Optional: Set the size with CSS-Classes
- * @param {boolean} [dm=false] Optional: If true, it overrides the Darkmode setting
- * @returns HTMLElement
- */
-function insert_u703(pre = "U", brand = "703", onclick = null, font = "default", size = "tiny", dm = false) {
-    console.assert(brand != undefined, "Brand cannot be undefined");
-    console.assert(pre != undefined, "pre cannot be undefined");
-
-    let outer_span = document.createElement("span");
-    outer_span.className = `logo logo-size-${size} font-${font}`;
-    if (dm) outer_span.className += " logo-colors-override"
-
-    let black_span = document.createElement("span");
-    black_span.className = "logo-blacked";
-    black_span.innerText = pre;
-
-    let white_span = document.createElement("span");
-    white_span.className = "logo-whited";
-    white_span.innerText = brand;
-
-    outer_span.appendChild(black_span);
-    outer_span.appendChild(white_span);
-
-    if (typeof onclick === "function") {
-        outer_span.onclick = onclick;
-        outer_span.classList.add("pointer");
-    }
-
-    return outer_span;
-}
-
-function insert_logo(obj) {
-
-    //data-size="xl" data-pre="U" data-brand="PRiSMFLUX" onclick="document.location = 'https://prismflux.de'"></span>
-
-    let defaults = {
-        pre: "U",
-        brand: "703",
-        onclick: null,
-        font: "default",
-        size: "tiny",
-        dm: false
-    }
-
-    Object.assign(defaults, obj);
-
-    return insert_u703(obj.pre,
-        obj.brand,
-        obj.onclick,
-        obj.font,
-        obj.size,
-        obj.dm);
-}
-
 /* Object */
 function LogoFactory(obj = {}) {
     let defaults = {
         pre: "U",
         brand: "703",
-        onclick: null,
-        font: "default",
+        font: "barlow",
         size: "tiny",
-        dm: false
+        dm: false,
+        borders: false
     }
 
     Object.assign(defaults, obj);
+    console.log(defaults);
 
-    return this.create(obj.pre,
-        obj.brand,
-        obj.onclick,
-        obj.font,
-        obj.size,
-        obj.dm);
+    return this.create(
+        defaults.pre,
+        defaults.brand,
+        defaults.font,
+        defaults.size,
+        defaults.dm,
+        defaults.borders);
 }
 
 /**
  * Main function that creates the logo. Gives back the complete logo as HTMLElement.
  *
- * @param {string} [pre="U"] The text that belongs in the first square
- * @param {string} [brand="703"] The text that belongs in the second square
- * @param {function} [onclick=null] Optional: Function that gets called when the logo receives an onclick-Event
- * @param {string} [font="default"] Optional: Set the css selector prefixed with font
- * @param {string} [size="tiny"] Optional: Set the size with CSS-Classes
- * @param {boolean} [dm=false] Optional: If true, it overrides the Darkmode setting
+ * @param {string} pre The text that belongs in the first square
+ * @param {string} brand The text that belongs in the second square
+ * @param {function} onclick Optional: Function that gets called when the logo receives an onclick-Event
+ * @param {string} font Optional: Set the css selector prefixed with font
+ * @param {string} size Optional: Set the size with CSS-Classes
+ * @param {boolean} dm Optional: If true, it overrides the Darkmode setting
  * @returns HTMLElement
  */
-LogoFactory.prototype.create = function(pre = "U", brand = "703", onclick = null, font = "default", size = "tiny", dm = false) {
+LogoFactory.prototype.create = function(pre, brand, font, size, dm, borders) {
     console.assert(brand != undefined, "Brand cannot be undefined");
     console.assert(pre != undefined, "pre cannot be undefined");
+    console.assert(font != undefined, "Font can't be undefined");
+    console.assert(size != undefined, "Size can't be undefined");
 
     let outer_span = document.createElement("span");
     outer_span.className = `logo logo-size-${size} font-${font}`;
-    if (dm) outer_span.className += " logo-colors-override"
+    if (dm) outer_span.classList.add("logo-colors-override");
+    if (borders) outer_span.classList.add("logo-border");
 
     let black_span = document.createElement("span");
     black_span.className = "logo-blacked";
@@ -112,10 +56,15 @@ LogoFactory.prototype.create = function(pre = "U", brand = "703", onclick = null
 
     console.log(onclick);
 
-    if (typeof onclick === "function") {
-        outer_span.onclick = onclick;
-        outer_span.classList.add("pointer");
-    }
-
     return outer_span;
+}
+
+function initLogo(domSelector = ".preview") {
+    document.querySelectorAll(domSelector).forEach(function(e) {
+        //label
+        let label = document.createElement("p");
+        label.innerText = "Size: " + e.dataset.size;
+        e.appendChild(label);
+        e.appendChild(new LogoFactory(e.dataset));
+    });
 }

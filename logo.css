@@ -1,6 +1,5 @@
 .logo {
     /* font-size: 200px; */
-    border: 0.05em solid var(--logo-u-color-bg);
     transition: all 0.5s ease-in-out;
     cursor: default;
     user-select: none;
@@ -47,10 +46,14 @@
     transition: all 0.5s ease-in-out;
 }
 
+.logo-border {
+    border: 0.05em solid var(--logo-u-color-bg);
+}
+
 
 /* Logo Fonts */
 
-.font-default {
+.font-barlow {
     font-family: 'Barlow', sans-serif;
 }
 
