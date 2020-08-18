@@ -1,9 +1,9 @@
 .logo {
-    font-family: 'Barlow', sans-serif;
     /* font-size: 200px; */
     border: 0.05em solid var(--logo-u-color-bg);
     transition: all 0.5s ease-in-out;
     cursor: default;
+    user-select: none;
 }
 
 .pointer {
@@ -11,23 +11,23 @@
 }
 
 .logo-size-xl {
-    font-size: 5vw;
+    font-size: 5em;
 }
 
 .logo-size-big {
-    font-size: 4vw;
+    font-size: 4em;
 }
 
 .logo-size-medium {
-    font-size: 3vw;
+    font-size: 3em;
 }
 
 .logo-size-small {
-    font-size: 2vw;
+    font-size: 2em;
 }
 
 .logo-size-tiny {
-    font-size: 1vw;
+    font-size: 1em;
 }
 
 .logo-blacked {
@@ -48,13 +48,16 @@
 }
 
 
-/* .logo:before {
-    content: "U";
-    background-color: black;
-    color: white;
-    border-color: black;
-    border-style: dotted;
-    display: inline;
-    padding-right: 0.25em;
-    padding-left: 0.25em;
-} */
+/* Logo Fonts */
+
+.font-default {
+    font-family: 'Barlow', sans-serif;
+}
+
+.font-arial {
+    font-family: "Arial";
+}
+
+.font-comicsansms {
+    font-family: "Comic Sans MS";
+}
